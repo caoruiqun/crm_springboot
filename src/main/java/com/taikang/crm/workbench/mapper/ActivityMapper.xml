@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.taikang.crm.workbench.mapper.ActivityMapper">
+  <resultMap id="BaseResultMap" type="com.taikang.crm.workbench.model.Activity">
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="owner" jdbcType="CHAR" property="owner" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="startDate" jdbcType="CHAR" property="startDate" />
+    <result column="endDate" jdbcType="CHAR" property="endDate" />
+    <result column="cost" jdbcType="VARCHAR" property="cost" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="createTime" jdbcType="CHAR" property="createTime" />
+    <result column="createBy" jdbcType="VARCHAR" property="createBy" />
+    <result column="editTime" jdbcType="CHAR" property="editTime" />
+    <result column="editBy" jdbcType="VARCHAR" property="editBy" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, owner, name, startDate, endDate, cost, description, createTime, createBy, editTime, 
+    editBy
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from tbl_activity
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from tbl_activity
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.taikang.crm.workbench.model.Activity">
+    insert into tbl_activity (id, owner, name, startDate, 
+      endDate, cost, description, 
+      createTime, createBy, editTime, 
+      editBy)
+    values (#{id,jdbcType=CHAR}, #{owner,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{startdate,jdbcType=CHAR}, 
+      #{enddate,jdbcType=CHAR}, #{cost,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=CHAR}, #{createby,jdbcType=VARCHAR}, #{edittime,jdbcType=CHAR}, 
+      #{editby,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.taikang.crm.workbench.model.Activity">
+    insert into tbl_activity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="owner != null">
+        owner,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="startDate != null">
+        startDate,
+      </if>
+      <if test="endDate != null">
+        endDate,
+      </if>
+      <if test="cost != null">
+        cost,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="createTime != null">
+        createTime,
+      </if>
+      <if test="createBy != null">
+        createBy,
+      </if>
+      <if test="editTime != null">
+        editTime,
+      </if>
+      <if test="editBy != null">
+        editBy,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="owner != null">
+        #{owner,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null">
+        #{startDate,jdbcType=CHAR},
+      </if>
+      <if test="endDate != null">
+        #{endDate,jdbcType=CHAR},
+      </if>
+      <if test="cost != null">
+        #{cost,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=CHAR},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="editTime != null">
+        #{editTime,jdbcType=CHAR},
+      </if>
+      <if test="editBy != null">
+        #{editBy,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.taikang.crm.workbench.model.Activity">
+    update tbl_activity
+    <set>
+      <if test="owner != null">
+        owner = #{owner,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="startDate != null">
+        startDate = #{startDate,jdbcType=CHAR},
+      </if>
+      <if test="endDate != null">
+        endDate = #{endDate,jdbcType=CHAR},
+      </if>
+      <if test="cost != null">
+        cost = #{cost,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        createTime = #{createTime,jdbcType=CHAR},
+      </if>
+      <if test="createBy != null">
+        createBy = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="editTime != null">
+        editTime = #{editTime,jdbcType=CHAR},
+      </if>
+      <if test="editBy != null">
+        editBy = #{editBy,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.taikang.crm.workbench.model.Activity">
+    update tbl_activity
+    set owner = #{owner,jdbcType=CHAR},
+      name = #{name,jdbcType=VARCHAR},
+      startDate = #{startdate,jdbcType=CHAR},
+      endDate = #{enddate,jdbcType=CHAR},
+      cost = #{cost,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=CHAR},
+      createBy = #{createby,jdbcType=VARCHAR},
+      editTime = #{edittime,jdbcType=CHAR},
+      editBy = #{editby,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+
+  <select id="getTotalByCondition" resultType="java.lang.Integer">
+    select
+    count(*)
+    from
+    tbl_activity a
+    join
+    tbl_user u
+    on
+    a.owner=u.id
+    <where>
+
+      <if test="name!=null and name!=''">
+
+        a.name like '%' #{name} '%'
+
+      </if>
+
+      <if test="owner!=null and owner!=''">
+
+        and u.name like '%' #{owner} '%'
+
+      </if>
+
+      <if test="startDate!=null and startDate!=''">
+
+        and a.startDate &gt; #{startDate}
+
+      </if>
+
+      <if test="endDate!=null and endDate!=''">
+
+        and a.endDate &lt; #{endDate}
+
+      </if>
+
+    </where>
+
+  </select>
+
+  <select id="getActivityListByCondition" resultType="com.taikang.crm.workbench.model.Activity">
+    select
+    a.id,
+    a.name,
+    u.name as owner,
+    a.startDate,
+    a.endDate
+    from
+    tbl_activity a
+    join
+    tbl_user u
+    on
+    a.owner=u.id
+    <where>
+
+      <if test="name!=null and name!=''">
+
+        a.name like '%' #{name} '%'
+
+      </if>
+
+      <if test="owner!=null and owner!=''">
+
+        and u.name like '%' #{owner} '%'
+
+      </if>
+
+      <if test="startDate!=null and startDate!=''">
+
+        and a.startDate &gt; #{startDate}
+
+      </if>
+
+      <if test="endDate!=null and endDate!=''">
+
+        and a.endDate &lt; #{endDate}
+
+      </if>
+
+    </where>
+
+    order by a.createTime desc
+
+    limit #{skipCount},#{pageSize}
+
+  </select>
+
+  <delete id="deleteByIds">
+
+    delete from tbl_activity
+
+    where id in
+
+    <foreach collection="array" item="id" open="(" close=")" separator=",">
+
+      #{id}
+
+    </foreach>
+
+  </delete>
+
+  <select id="selectById" parameterType="java.lang.String" resultType="com.taikang.crm.workbench.model.Activity">
+      select
+
+      a.id,
+      u.name as owner,
+      a.name,
+      a.startDate,
+      a.endDate,
+      a.cost,
+      a.description,
+      a.createTime,
+      a.createBy,
+      a.editTime,
+      a.editBy
+
+
+      from tbl_activity a
+      join tbl_user u
+      on a.owner=u.id
+
+      where a.id=#{id}
+
+  </select>
+
+    <select id="getActivityListByClueId" resultType="com.taikang.crm.workbench.model.Activity">
+        select
+
+        car.id as id,
+        a.name,
+        a.startDate,
+        a.endDate,
+        u.name as owner
+
+        from tbl_activity a
+        join tbl_user u
+        on a.owner=u.id
+        join tbl_clue_activity_relation car
+        on a.id=car.activityId
+
+        where car.clueId=#{clueId}
+    </select>
+  <select id="getActivityListByNameNotByClueId" resultType="com.taikang.crm.workbench.model.Activity">
+
+    select
+        a.id,
+        a.name,
+        a.startDate,
+        a.endDate,
+        u.name as owner
+
+    from tbl_activity a
+    join tbl_user u
+    on a.owner=u.id
+
+--     join tbl_clue_activity_relation car
+--     on a.id=car.activityId
+
+    where a.name like '%' #{aname} '%'
+    and
+    a.id not in
+    (
+
+      select activityId from tbl_clue_activity_relation where clueId=#{clueId}
+
+    )
+
+  </select>
+  <select id="getActivityListByName" resultType="com.taikang.crm.workbench.model.Activity">
+    select
+    a.id,
+    a.name,
+    a.startDate,
+    a.endDate,
+    u.name as owner
+
+    from tbl_activity a
+    join tbl_user u
+    on a.owner=u.id
+
+    where a.name like '%' #{aname} '%'
+  </select>
+
+</mapper>
